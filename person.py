@@ -23,37 +23,23 @@ class Person(Comparable):
         return self.__birthday
 
     def compare(self, other_person):
-        this_birthday = str(self.get_birthday())
-        this_year, this_month, this_day = this_birthday.split('-')
-        this_year, this_month, this_day = int(this_year), int(this_month), int(this_day)
         this_name = self.get_name()
-        other_birthday = str(other_person.get_birthday())
-        other_year, other_month, other_day = other_birthday.split('-')
-        other_year, other_month, other_day = int(other_year), int(other_month), int(other_day)
         other_name = other_person.get_name()
+        other_person_date = other_person.get_birthday()
         Comparable.compare(other_person)
+        compare_result = self.__birthday.compare(other_person_date)
 
-        if this_year > other_year:
+        if compare_result == 1:
             return 1
-        elif this_year == other_year:
-            if this_month > other_month:
-                return 1
-            elif this_month == other_month:
-                if this_day > other_day:
-                    return 1
-                elif this_day == other_day:
-                    if this_name > other_name:
-                        return 1
-                    elif this_name < other_name:
-                        return -1
-                    else:
-                        return 0
-                else:
-                    return -1
-            else:
-                return -1
-        else:
+        elif compare_result == -1:
             return -1
+        else:
+            if this_name > other_name:
+                return 1
+            elif this_name < other_name:
+                return -1
+            else :
+                return 0
 
 
     def __str__(self):

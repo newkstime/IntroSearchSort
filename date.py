@@ -24,17 +24,16 @@ class Date(Comparable):
         return self.__year
 
     def compare(self, other_date):
-        self.__this_date = Date(self.__year, self.__month, self.__day)
-        if self.__this_date.__year > other_date.__year:
+        if self.__year > other_date.__year:
             return 1
-        elif self.__this_date.__year == other_date.__year:
-            if self.__this_date.__month > other_date.__month:
+        elif self.__year == other_date.__year:
+            if self.__month > other_date.__month:
                 return 1
-            elif self.__this_date.__month == other_date.__month:
-                if self.__this_date.__day > other_date.__day:
+            elif self.__month == other_date.__month:
+                if self.__day > other_date.__day:
                     return 1
-                elif self.__this_date.__day == other_date.__day:
-                    return 0
+                elif self.__day == other_date.__day:
+                        return 0
                 else:
                     return -1
             else:
